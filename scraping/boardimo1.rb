@@ -9,7 +9,7 @@ app = Nokogiri::HTML(html)
 db = SQLite3::Database.new("boardimo1DB.db")
 
 # Create table if not exists
-rows = db.execute <<-SQL
+db.execute <<-SQL
   create table if not exists house (
     image_maison TEXT(30),
     title TEXT,
