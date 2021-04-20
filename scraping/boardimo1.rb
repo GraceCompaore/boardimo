@@ -3,6 +3,7 @@ require "nokogiri"
 require "open-uri"
 require "sqlite3"
 
+
 url = "https://simply-home.herokuapp.com/house.php"
 html = URI.open(url)
 app = Nokogiri::HTML(html)
@@ -46,8 +47,9 @@ house_node_list.each do |house_node|
   current_url = "https://simply-home.herokuapp.com/#{current_house_url}"
   current_html = URI.open(current_url)
   current_app = Nokogiri::HTML(current_html)
-  
+
   image_maison = current_app.css("#singleArticleImage img").attr('src')
+
   title = current_app.css("#titleSingleArticle h2").children.text
 
   price = current_app.css("#singleArticleIcon .price").children.text
