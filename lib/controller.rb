@@ -9,19 +9,16 @@ class Controller
   attr_accessor :params
 
   def index
-    
     @list = House::all
 
     render({list: @list})
   end
 
-  def list
+  def analyse
     @houses = House::all
 
     render_json({ houses: @houses })
   end
-
-  
 
   def clear
     board.clear

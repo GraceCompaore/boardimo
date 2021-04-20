@@ -1,7 +1,8 @@
 require "sqlite3"
 
 class House
-    attr_reader :title, :price, :size, :foundation_years, :energy
+  attr_reader :title, :price, :size, :foundation_years, :energy
+  
   def initialize(title:, price:, size:, foundation_years:, energy:)
     @title = title
     @price = price
@@ -28,6 +29,7 @@ class House
     self.new(title: row["title"], price: row["price"], size: row["size"], foundation_years: row["foundation_years"], energy: row["energy"])
   end
 
-def self.get_average(size)
-    dbCnx.execute("SELECT AVG (price) AS average FROM house WHERE size = #{size}").first
+  def self.get_average(size)
+      dbCnx.execute("SELECT AVG (price) AS average FROM house WHERE size = #{size}").first
+  end
 end
