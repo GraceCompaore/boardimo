@@ -74,8 +74,8 @@ house_node_list.each do |house_node|
     db.execute "INSERT INTO house (title, price, size, foundation_years, energy) VALUES (?, ?, ?, ?, ?)", [title , price, size, foundation_years, energy]
 end
 
-stm = db.prepare "SELECT * FROM house"
-result = stm.execute
+request = db.prepare "SELECT * FROM house"
+result = request.execute
     
 for row in result do
   puts row.join "\s"

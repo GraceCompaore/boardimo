@@ -1,9 +1,14 @@
 class Board
   
-    attr_reader :houses, :current_house
+    attr_reader :current_house
   
-    def initialize
-      @houses = []
+    # def initialize
+      
+    # end
+
+    def find_house_by_title(title)
+      @current_house = House::find_by_title(title)
+      puts current_house
     end
   
     def comparaison_price (price, size)
@@ -13,12 +18,6 @@ class Board
     end
 
     def comparaison_energy(energy)
-    end
-
-
-  
-    def clear
-      @houses = []
     end
   
   end

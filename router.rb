@@ -14,10 +14,8 @@ class Router
     case path
     when "/"
       controller.index
-    when "/analyse"
-      controller.analyse
-    when "/clear"
-      controller.clear
+    when "/find"
+      controller.find
     else
       controller.not_found
     end 

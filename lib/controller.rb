@@ -2,28 +2,29 @@ require "json"
 require "tilt"
 require "erb"
 
-require "./lib/board_imo"
+require "./lib/board"
 require "./lib/house"
 
 class Controller
   attr_accessor :params
 
   def index
-    @list = House::all
+    @selected_house = board.current_house
 
-    render({list: @list})
+    render({selected_house: @selected_house})
+  end
+
+  def find
+    arguments = params["search"]
+    board.find_house_by_title(arguments)
+    
+    redirect("/")
   end
 
   def analyse
     @houses = House::all
 
     render_json({ houses: @houses })
-  end
-
-  def clear
-    board.clear
-
-    redirect("/")
   end
 
   def not_found
